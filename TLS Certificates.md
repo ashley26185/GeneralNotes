@@ -25,10 +25,10 @@ DER Distinguished Encoding Rules - Binary format
 PEM Privacy Enhanced Mail - Text format
 
 ## Public Certificates Naming convention (This could be after signing)
-.crt / .pem
+    .crt / .pem
 
 ## Private Key Naming Convention
-.key / -key.pem
+    .key / -key.pem
 
 # Links
 https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs
@@ -38,26 +38,26 @@ https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/#4d47
 
 ## Generation
 ### Generate a Private Key [2048 / 4096/ 8192 ]
-openssl genrsa -out my-bank.key [bits]
+    openssl genrsa -out my-bank.key [bits]
 
 ### Generate a Public key from the private key (defaults inform and outform to PEM)
-openssl rsa -in my-bank.key -pubout -out pubkey.pem
+    openssl rsa -in my-bank.key -pubout -out pubkey.pem
 
 ## Connect to remote Servers
 ### Connect to remote server and obtain the certificate
-openssl s_client -servername stackexchange.com -connect stackexchange.com:443 -showcerts
+    openssl s_client -servername stackexchange.com -connect stackexchange.com:443 -showcerts
 
 ## Read the Certificates / Validate Certificates
 ### Print the certificate
-openssl x509 -in stackexchange.crt -text -noout
+    openssl x509 -in stackexchange.crt -text -noout
 
 ### Verify certificate, provided that you have root and any intemediate certificates configured as trusted on your machine:
-openssl verify example.crt
-openssl verify -verbose -CAFile ca.crt domain.crt
+    openssl verify example.crt
+    openssl verify -verbose -CAFile ca.crt domain.crt
 
 ### Verify that certificate served by a remote server covers given host name. Useful to check your mutlidomain certificate properly covers all the host names.
-openssl s_client -verify_hostname www.stackexchange.com -connect stackexchange.com:443
+    openssl s_client -verify_hostname www.stackexchange.com -connect stackexchange.com:443
 
 ### View all certificates in a chain (Does not work with libressl on mac)
-openssl storeutl -noout -text -certs bundle.crt
+    openssl storeutl -noout -text -certs bundle.crt
 
