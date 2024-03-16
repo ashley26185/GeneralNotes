@@ -22,7 +22,6 @@ openssl genrsa -out my-bank.key [bits]
 ### Generate a Public key from the private key (defaults inform and outform to PEM)
 openssl rsa -in my-bank.key -pubout -out pubkey.pem
 
-
 ### Public Certificates Naming convention (This could be after signing)
 .crt / .pem
 
@@ -33,5 +32,8 @@ openssl rsa -in my-bank.key -pubout -out pubkey.pem
 openssl s_client -servername stackexchange.com -connect stackexchange.com:443 -showcerts
 
 ### Print the certificate
-openssl x509 -in stackexchange.crt -text -noou
+openssl x509 -in stackexchange.crt -text -noout
+
+# Verify certificate, provided that you have root and any intemediate certificates configured as trusted on your machine:
+openssl verify example.crt
 
