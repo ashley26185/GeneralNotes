@@ -1,14 +1,14 @@
 # Types of Encryption
 ## Symmetric Encryption
-Data is encrypted using a Private Key
-Key is sent with the data and used for both encryption and decryption
+Data is encrypted using a Private Key  
+Key is sent with the data and used for both encryption and decryption  
 Hackers can sniff the key as well
 
 ## Assymetric Encryption
-A Pair of keys - Private Key and Public Key
+A Pair of keys - Private Key and Public Key  
 Public Lock can be used to encrypt and shared with anyone. Encrypted data can only be unlocked using the Private Key
 
-Copy the Public Locks to the servers under ~/.ssh/authorized_keys
+Copy the Public Locks to the servers under ~/.ssh/authorized_keys  
 Never share the private key with anyone
 
 
@@ -17,11 +17,11 @@ In ANY public key crypto system the public key is mathematically related to the 
 
 # Standards
 ## Standards
-PKCS#7 Collection of public certificates.
+PKCS#7 Collection of public certificates.  
 PKCS#12 Certificate, Private key and probably a CA chain.
 
 ## File formats
-DER Distinguished Encoding Rules - Binary format
+DER Distinguished Encoding Rules - Binary format  
 PEM Privacy Enhanced Mail - Text format
 
 ## Public Certificates Naming convention (This could be after signing)
@@ -34,7 +34,7 @@ PEM Privacy Enhanced Mail - Text format
 https://www.digitalocean.com/community/tutorials/openssl-essentials-working-with-ssl-certificates-private-keys-and-csrs
 https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/#4d47
 
-# Commnds
+# Commands
 
 ## Generation
 ### Generate a Private Key [2048 / 4096/ 8192 ]
