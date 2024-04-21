@@ -22,7 +22,8 @@ PKCS#12 Certificate, Private key and probably a CA chain.
 
 ## File formats
 DER Distinguished Encoding Rules - Binary format  
-PEM Privacy Enhanced Mail - Text format
+PEM Privacy Enhanced Mail - Text format  
+CER/CRT don't really have an agreed format unfortunately
 
 ## Public Certificates Naming convention (This could be after signing)
     .crt / .pem
