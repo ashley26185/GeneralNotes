@@ -5,8 +5,9 @@
 
 
 # Let OpenTelemetry decide which instrumentation I might want for a project
-    opentelemetry-bootstrap
-
+    opentelemetry-bootstrap (This lists out the packages)
+    opentelemetry-bootstrap -a install (This will install the recommended packages)  
+    
 ![Otel-Bootstrap](./images/otel-bootstrap.png "Let OpenTelemetry Decide instrumentation")
 
 # Instrument
