@@ -14,7 +14,6 @@ opentelemetry-instrument \
     --traces_export console --metrics_exporter console --logs_export console
     ./app.py
 
-
 # Add a trace
 ```python
 from opentelemetry import trace
