@@ -1,5 +1,5 @@
  # Modify your remote URL
- git remote set-url origin https://git-repo/new-repository.git
+    git remote set-url origin https://git-repo/new-repository.git
 
  ## Clone from a Repository
 Ctrl + Shift + P --> Clone from Repository URL
@@ -151,3 +151,15 @@ if there there are multiple remote repositories configured it becomes a bit long
 git checkout -b test <name of remote>/test
 
  
+ # Configure emails and name
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+
+  # Initialize a repository on local
+    echo "# otel-python" >> README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin https://github.com/ashley26185/otel-python.git
+    git push -u origin main

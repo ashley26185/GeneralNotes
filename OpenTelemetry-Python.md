@@ -7,7 +7,7 @@
 # Let OpenTelemetry decide which instrumentation I might want for a project
     opentelemetry-bootstrap (This lists out the packages)
     opentelemetry-bootstrap -a install (This will install the recommended packages)  
-    
+
 ![Otel-Bootstrap](./images/otel-bootstrap.png "Let OpenTelemetry Decide instrumentation")
 
 # Instrument
@@ -17,11 +17,13 @@ opentelemetry-instrument \
 
 # Add a trace
 ```python
+# Import the TracerProvider
 from opentelemetry import trace
 
 tracer = trace.get_tracer(__name__)
 
 def do_work():
+    # Create a new root span, set it as the current span in context
     with tracer.start_as_current_span("span-name") as span:
         #do some work that the span will track
         print("doing some work")
@@ -36,10 +38,11 @@ def do_some_work:
     # span is stopped when the method goes out of scope
 
 def do_work():
+    # Create a new root span, set it as the current span in context
     with tracer.start_as_current_span("parent-span") as parent:
         #do some work that the parent will track
         print("doing some work")
-        #Create a nested span to track nested work
+        # Attach a new child and update the current span
         with tracer.start_as_current_span("child-span") as child:
             child.set_attribute("operation.value",1)
             child.set_attribute("operation.name","saying hello")
@@ -51,8 +54,8 @@ def do_work():
             child.add_event("Gonna try it")
             do_the_thing()
             child.add_event("Finished doing it")
-            #The nested span is closen when it is out of scope
-        #This parent span is also closed when it is out of scope
+            #The nested span is closen when it is out of scope. Close child span, set parent as current
+        #This parent span is also closed when it is out of scope. Close parent span, set default span as current
 ```
 
 # Metrics
