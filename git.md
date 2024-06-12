@@ -71,8 +71,6 @@ This will load all the remote branches locally so now you can simply access any 
 Note: You CANNOT UNDO this.
 Try git checkout -f this will discard any local changes which are not committed in ALL branches and master
 
-
-
 ## Process
 git pull
 git branch -vva
