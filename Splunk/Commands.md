@@ -1,3 +1,7 @@
+# Good Links
+https://docs.splunk.com/Documentation/SCS/current/SearchReference/FromCommandOverview
+
+
 # stats
 ```
 stats count by X,Y
