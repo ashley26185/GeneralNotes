@@ -41,13 +41,14 @@ www3,San Francisco"
 # multivalue commands
 A multi value field is like an array
 
-## makemv - convert a field into multi value field
-## mvexpand - expand a multi value field into multiple rows
-## mvcombine - combine multiple rows into a single multi value field if other columns are the same. The mvcombine command creates a multivalue version of the field you specify, as well as a single value version of the field. The multivalue version is displayed by default
-## nomv - changes multivalue to singlevalue
+## Key Commands
+  - makemv - convert a field into multi value field
+  - mvexpand - expand a multi value field into multiple rows
+  - mvcombine - combine multiple rows into a single multi value field if other columns are the same. The mvcombine command creates a multivalue version of the field you specify, as well as a single value version of the field. The multivalue version is displayed by default
+  - nomv - changes multivalue to singlevalue
 
 
-## eval multivalue
+## eval multivalue functions
     - mvappend
     - mvcount
     - mvfilter(<predicate>) / 
@@ -61,6 +62,8 @@ A multi value field is like an array
     - mvzip
     - mvsort
     - split(<str>, <delim>)
+
+## Examples
 
 ```SPL
 | makeresults 
