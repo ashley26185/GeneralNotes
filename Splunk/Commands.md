@@ -98,3 +98,6 @@ A multi value field is like an array
 # spath
 Use {} to indicate an array
 
+# eval 
+
+-  | eval newField = relative_time(now(), "-7d@d")
