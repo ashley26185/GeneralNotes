@@ -38,3 +38,60 @@ www3,San Francisco"
 | fieldsummary maxvals=11 visitor_count
 ```
 
+# multivalue commands
+A multi value field is like an array
+
+## makemv - convert a field into multi value field
+## mvexpand - expand a multi value field into multiple rows
+## mvcombine - combine multiple rows into a single multi value field if other columns are the same. The mvcombine command creates a multivalue version of the field you specify, as well as a single value version of the field. The multivalue version is displayed by default
+## nomv - changes multivalue to singlevalue
+
+
+## eval multivalue
+    - mvappend
+    - mvcount
+    - mvfilter(<predicate>) / 
+        - | eval n=mvfilter(match(email, "\.net$") OR match(email, "\.org$"))
+    - mvdedup
+    - mvfind(<mv>, <regex>)
+        - eval n=mvfind(myfield, "err\d+")
+    - mvindex(<mv>, <start>, <end>)
+    - mvrange
+    - mvjoin(<mv>,<delim>)
+    - mvzip
+    - mvsort
+    - split(<str>, <delim>)
+
+```SPL
+| makeresults 
+| eval animals = "Cat,Dog,Tiger,Elephant" 
+| makemv delim="," animals
+```| nomv animals```
+| mvexpand animals
+| mvcombine delim=":" animals
+| nomv animals
+```
+
+```SPL
+| makeresults count=10
+| streamstats count
+| mvcombine delim=":" count
+| nomv count
+```
+
+```SPL
+| makeresults
+| eval base=mvrange(1,5),joined=mvjoin(base,":")
+```
+
+```SPL
+| makeresults 
+| eval emails="user1@foo.com,user2@foo.com,user3@foo.com"
+| makemv delim="," emails
+| eval found=mvfilter(match(emails,"user3"))
+| table emails, found
+```
+
+# spath
+Use {} to indicate an array
+
