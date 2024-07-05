@@ -121,8 +121,8 @@ use additional agrument "input=" to specify the field to use spath on. For examp
 | mpreview index=
 
 # mcatalog
-| mcatalag values(_dims)
-| mcatalag values(metric_name)
+| mcatalog values(_dims)
+| mcatalog values(metric_name)
 
 # mstats
 | mstats avg("CPU") where index=main span =1m
