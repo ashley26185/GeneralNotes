@@ -1,10 +1,10 @@
 
-helm list -a
-helm install <localinstallname> <chartname>
-helm rollback <localinstallname> version
-helm template
+helm list -a  
+helm install <localinstallname> <chartname>  
+helm rollback <localinstallname> version  
+helm template  
 
-# Find any errors or misconfigurations
-helm lint <chartname>
+# Find any errors or misconfigurations  
+helm lint <chartname>  
 
-helm uninstall <localinstallname>
+helm uninstall <localinstallname>  
