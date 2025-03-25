@@ -1,28 +1,5 @@
-terraform {
- required_providers {
-   aws = {
-     source  = "hashicorp/aws"
-     version = "~> 4.0"
-   }
- }
-}
-
-provider "aws" {
- region = "us-east-1"
-}
-
 data "aws_vpc" "default" {
  default = true
-}
-
-variable "ingress_cidr_blocks" {
-  type = list(string)
-  default = [
-    # In practice, this is rarely used.
-    "192.168.1.1/32",
-    "192.168.1.2/32",
-    "192.168.1.3/32"
-  ]
 }
 
  # AWS Security Group Ingress Rules
@@ -39,11 +16,32 @@ resource "aws_security_group" "observability_sg" {
 ## Define the security group rules
 ### Couchbase Security Group Rule
 resource "aws_vpc_security_group_ingress_rule" "observability_sgrule_couchbase" {
-  for_each          = toset(var.ingress_cidr_blocks)
-  cidr_ipv4         = each.value
+  count = var.enable_couchbase_sg_rule? length(var.ingress_cidr_blocks) : 0
+
+  description = "Pre-Req for Coucbase DB Monitoring"
+  security_group_id = aws_security_group.observability_sg.id
   from_port         = 8091
   to_port           = 8091
   ip_protocol       = "tcp"
-  security_group_id = aws_security_group.observability_sg.id
+  cidr_ipv4         = var.enable_couchbase_sg_rule ? tolist(var.ingress_cidr_blocks)[count.index] : null
+  tags = {
+    Name = "Couchbase Monitoring"
+  }
+
 }
 
+### RDS Oracle Security Group Rule
+resource "aws_vpc_security_group_ingress_rule" "observability_sgrule_rds_oracle" {
+  count = var.enable_rds_oracle_sg_rule ? length(var.ingress_cidr_blocks) : 0
+
+  description = "Pre-Req to monitor RDS Oracle from Central LA"
+  security_group_id = aws_security_group.observability_sg.id
+  from_port         = 6515
+  to_port           = 6520
+  ip_protocol       = "tcp"
+  cidr_ipv4         = var.enable_rds_oracle_sg_rule ? tolist(var.ingress_cidr_blocks)[count.index] : null
+
+  tags = {
+    Name = "RDS Oracle Monitoring"
+  }
+}
