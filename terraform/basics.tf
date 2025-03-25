@@ -32,3 +32,32 @@ module "my_taco" {
   cheese = var.cheese
 }
 
+[for s in var.list : upper(s)]
+[for i, v in var.list : "${i} is ${v}"]
+
+[for k, v in var.map : length(k) + length(v)]
+
+
+{for s in var.list : s => upper(s)}
+
+## for with conditional if
+[for s in var.list : upper(s) if s != ""]
+
+variable "users" {
+  type = map(object({
+    is_admin = bool
+  }))
+}
+
+locals {
+  admin_users = {
+    for name, user in var.users : name => user
+    if user.is_admin
+  }
+  regular_users = {
+    for name, user in var.users : name => user
+    if !user.is_admin
+  }
+}
+
+
