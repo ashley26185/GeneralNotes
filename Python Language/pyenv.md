@@ -4,7 +4,7 @@ Requirements to install pyenv
   brew install openssl readline sqlite3 xz zlib tcl-tk@8 libb2 zstd
 
 ## Install pyenv on zsh on mac
-    $ curl -fsSL https://pyenv.run | zsh
+  curl -fsSL https://pyenv.run | zsh
 
 ## Add pyenv to your shell
 ```bash
