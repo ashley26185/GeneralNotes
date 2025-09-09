@@ -11,7 +11,6 @@ variable "allowed_cidr_blocks" {
   ]
 }
 
-
 # This is deprecated. Do Not Use. Use the egress and ingress rule insteamd
 resource "aws_security_group_rule" "https" {
   security_group_id = aws_security_group.alb.id
