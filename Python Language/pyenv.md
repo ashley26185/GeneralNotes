@@ -20,13 +20,13 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zprofile
 ```
 
 ## Commands 
-pyenv commands
-Usage with --help
+pyenv commands  
+Usage with --help  
   pyenv install --help
   pyenv install --list
 
 ### Get the latest pyenv versions
-pyenv update 
+  pyenv update 
 
 ```zsh
 $ pyenv install --list | grep -E ' 3\.([1-9][0-9]+)'
@@ -47,16 +47,16 @@ $ pyenv install --list | grep -E ' 3\.([1-9][0-9]+)'
   3.15-dev
   3.15t-dev
   ```
-### Check installed versions
+### Check installed versions  
   pyenv versions
 
-### Checking the Current Python Executable Path: which
+### Checking the Current Python Executable Path: which  
   pyenv which python3
 
 ### Set the python version
-  pyenv shell <version>
-  pyenv local <version>
-  pyenv global <version>
+  pyenv shell <version>  
+  pyenv local <version>  
+  pyenv global <version>  
 
 ## Differences between venv, virtualenv and pyenv
 pyenv manages multiple Python versions.  
