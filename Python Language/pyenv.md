@@ -1,9 +1,11 @@
 # Manage multiple python versions using pyenv
 
 Requirements to install pyenv   
+
   brew install openssl readline sqlite3 xz zlib tcl-tk@8 libb2 zstd
 
 ## Install pyenv on zsh on mac
+
   curl -fsSL https://pyenv.run | zsh
 
 ## Add pyenv to your shell
@@ -22,10 +24,12 @@ echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zprofile
 ## Commands 
 pyenv commands  
 Usage with --help  
+
   pyenv install --help
   pyenv install --list
 
 ### Get the latest pyenv versions
+
   pyenv update 
 
 ```zsh
@@ -48,12 +52,15 @@ $ pyenv install --list | grep -E ' 3\.([1-9][0-9]+)'
   3.15t-dev
   ```
 ### Check installed versions  
+
   pyenv versions
 
 ### Checking the Current Python Executable Path: which  
+
   pyenv which python3
 
 ### Set the python version
+
   pyenv shell <version>  
   pyenv local <version>  
   pyenv global <version>  
