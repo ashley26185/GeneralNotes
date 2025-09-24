@@ -41,3 +41,42 @@ class ChildClass(ParentClass):  # ChildClass inherits from ParentClass
     def introduce(self):
         print(f"My name is {self.name} and I am {self.age} years old.")
 ```
+## Decorators - Enhance functionality of a function
+```py
+def decorator(func):
+    def wrapper():
+        print("Before calling the function.")
+        func()
+        print("After calling the function.")
+    return wrapper
+
+@decorator # Applying the decorator to a function
+def greet():
+    print("Hello, World!")
+greet()
+```
+
+## Methhod annotations
+```py
+@dataclass
+@staticmethod
+@validator (from pydantic)
+
+```
+
+## Indicate where code will go
+```py
+class Dog:
+    pass
+```
+
+# Class Names
+Python class names are written in CapitalizedWords notation by convention
+```py
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+# 
+
